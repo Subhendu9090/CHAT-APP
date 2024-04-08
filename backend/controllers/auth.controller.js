@@ -14,8 +14,9 @@ export const signup = async (req, res) => {
       return res.status(400).json({ error: "password do not match with confirm password" })
     }
 
-    const user = await User.findOne({ userName })
+   const user=await User.findOne({username:userName})
     if (user) {
+      console.log("user already exist");
       return res.status(400).json({ error: "user already exist" })
     }
 
@@ -51,12 +52,13 @@ export const signup = async (req, res) => {
 
 export const login = async (req, res) => {
   try {
-    const { userName, password } = req.body;
-    if ([userName, password].some((field) => field.trim() === "")) {
+    const { username, password } = req.body;
+
+    if ([username, password].some((field) => field.trim() === "")) {
       res.status(400).json({ error: "please enter valid credentials" })
     }
 
-    const user = await User.findOne({ username: userName })
+    const user = await User.findOne({ username })
 
     if (!user) {
       res.status(400).json({ error: "user not found" })
