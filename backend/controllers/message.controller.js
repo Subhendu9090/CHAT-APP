@@ -29,8 +29,8 @@ try {
 
     // use socket io for real time
     
-    console.log(conversation);
-    console.log(newMessage);
+    //console.log(conversation);
+    //console.log(newMessage);
 
     await conversation.save();
     await newMessage.save();
@@ -58,11 +58,11 @@ const getMessage = async(req,res)=>{
         if (!conversation) {
            return res.status(200).json([])
         }
-        console.log(conversation);
+       // console.log(conversation);
         
         const messages = conversation.messages
 
-        console.log("messeges: ",messages);
+        // console.log("messeges: ",messages);
 
         res.status(200).json(messages)
 

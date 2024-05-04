@@ -11,7 +11,7 @@ function Message({ message }) {
   const { selectedConversation } = useConversation();
 
   const fromMe = message.senderId === authUser.user._id;
-console.log(fromMe);
+// console.log(fromMe);
 
   const chatClassName = fromMe ? " chat-end" : " chat-start";
   
